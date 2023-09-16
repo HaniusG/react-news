@@ -1,15 +1,37 @@
-import { Component } from "react";
-import './app.css'
-import Register from "../Register";
+import { Component, useCallback } from "react";
+import "./app.css";
+import RegisterPage from "../RegisterPage";
+import UserPage from "../UserPage";
 
 class App extends Component {
-    render() {
-        return (
-            <div>
-                <Register/>
-            </div>
-        )
-    }
+  state = {
+    newUsername: "",
+    newEmail: "",
+    newPassword: "",
+    isClicked: false,
+  };
+
+  handleRegister = (username, email, password) => {
+    this.setState({
+        newUsername: username,
+        newEmail: email,
+        newPassword: password,
+        isClicked: true
+    });
+  };
+  render() {
+    const { newUsername, newEmail, newPassword, isClicked } = this.state;
+    return (
+      <div className="app">
+        {!isClicked ?
+        <RegisterPage
+          handleRegister={this.handleRegister}
+        />:
+        <UserPage username={newUsername} email={newEmail} password={newPassword}/>
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
