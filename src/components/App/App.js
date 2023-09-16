@@ -16,19 +16,21 @@ class App extends Component {
         newUsername: username,
         newEmail: email,
         newPassword: password,
-        isClicked: true,
+        isClicked: true
     });
   };
 
   render() {
     const { newUsername, newEmail, newPassword, isClicked } = this.state;
+    
     return (
       <div className="app">
-        {!isClicked ?
+        {isClicked && newUsername && newEmail && newPassword ? 
+        <UserPage username={newUsername} email={newEmail} password={newPassword}/>
+        :
         <RegisterPage
           handleRegister={this.handleRegister}
-        />:
-        <UserPage username={newUsername} email={newEmail} password={newPassword}/>
+        />
         }
       </div>
     );
