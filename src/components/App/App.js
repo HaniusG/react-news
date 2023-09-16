@@ -16,9 +16,10 @@ class App extends Component {
         newUsername: username,
         newEmail: email,
         newPassword: password,
-        isClicked: true
+        isClicked: true,
     });
   };
+
   render() {
     const { newUsername, newEmail, newPassword, isClicked } = this.state;
     return (

@@ -1,0 +1,16 @@
+.userPage{
+    width: 400px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #F2F2F2;
+    margin: 20px auto;
+    align-items: center;
+}
+.userPage span{
+    display: block;
+    font-size: 20px;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 50px;
+}

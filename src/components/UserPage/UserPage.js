@@ -8,10 +8,16 @@ export default class UserPage extends Component {
   render() {
     const { username, email, password } = this.props;
     return (
-      <div> 
-        Username - {username}
-        Email - {email}
-        password - {password}
+      <div className="userPage"> 
+        <span>
+         Username - {username}
+        </span>
+        <span>
+          Email - {email}
+        </span>
+        <span>
+          Password - {password}
+        </span>
       </div>
     )
   }
