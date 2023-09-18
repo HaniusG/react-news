@@ -1,35 +1,34 @@
-import { Component, useCallback } from "react";
+import { Component } from "react";
 import "./app.css";
 import RegisterPage from "../RegisterPage";
 import UserPage from "../UserPage";
 
 class App extends Component {
   state = {
-    newUsername: "",
-    newEmail: "",
-    newPassword: "",
-    isClicked: false,
+    isRegistered: false,
+    userData: {}
   };
 
-  handleRegister = (username, email, password) => {
+  handleRegistration = (userData) => {
     this.setState({
-        newUsername: username,
-        newEmail: email,
-        newPassword: password,
-        isClicked: true
-    });
-  };
+        userData,
+        isRegistered: true,
+  })
+};
 
   render() {
-    const { newUsername, newEmail, newPassword, isClicked } = this.state;
+    const { userData, isRegistered } = this.state;
     
+   
+
     return (
       <div className="app">
-        {isClicked && newUsername && newEmail && newPassword ? 
-        <UserPage username={newUsername} email={newEmail} password={newPassword}/>
+        {isRegistered ? 
+        
+        <UserPage userData={userData}/>
         :
         <RegisterPage
-          handleRegister={this.handleRegister}
+          handleRegistration={this.handleRegistration}
         />
         }
       </div>

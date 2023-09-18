@@ -12,7 +12,7 @@ export default class UserPage extends Component {
   };
 
   render() {
-    const { username, email, password } = this.props;
+    const { username, email, password } = this.props.userData;
     const { imageUrl } = this.state;
     return (
       <div className="userPage">

@@ -1,22 +1,59 @@
 import { Component } from "react";
 import './register-page.css'
 export default class RergisterPage extends Component {
-
   state = {
     username: '',
     email: '',
-    password: ''
+    password: '',
+    validationErrors: {}
   }
   
+  validateEmail = (email) => {
+   const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+   if(regExp.test(email)){ 
+    return true;
+  }else{
+    return false;
+  }
+  }
+  validatePassword = (password) => {
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    if(regExp.test(password)){ 
+      return true;
+    }else{
+      return false;
+    }
+  }
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value })
   }
-  
-
-  render() {
+  handleRegister = () => {
     const { username, email, password } = this.state;
-    const { handleRegister } = this.props;
+    const validationErrors = {}
+    if (!email.trim() || !this.validateEmail(email)) {
+      validationErrors.email = 'Please enter a valid email.'
+    }
+    if (!password.trim() || !this.validatePassword(password)) {
+      validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
+    }
+    if (username.trim().length < 3) {
+      validationErrors.username = 'Username is required.'
+    }
+    if (Object.keys(validationErrors).length === 0) {
+      this.props.handleRegistration({ username, email, password })
+      this.setState({
+        username: '',
+        email: '',
+        password: '',
+        validationErrors: {}
+      })
+    } else {
+      this.setState({ validationErrors })
+    }
+  }
+  render() {
+    const { username, email, password, validationErrors } = this.state;
     return (
       <div className="register-page-wrapper">
         <h1>Register page</h1>
@@ -54,9 +91,18 @@ export default class RergisterPage extends Component {
               onChange={this.handleChange}
             />
           </div>
+          {
+            Object.keys(validationErrors).length ? (
+              <div className="error-alert">
+                <span>{ validationErrors.email }</span>
+                <span>{ validationErrors.password }</span>
+                <span>{ validationErrors.username }</span>
+              </div>
+            ) : null
+          }
           <button
             className="register-btn"
-            onClick={() => handleRegister(username, email, password) }
+            onClick={ this.handleRegister }
           >
             Register
           </button>
