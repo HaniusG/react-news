@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./app.css";
 import RegisterPage from "../RegisterPage";
 import UserPage from "../UserPage";
+import { setUserData, getUserData, setIsRegistered , getIsRegistered} from "../../services/LocalStorageService";
 
 class App extends Component {
   state = {
@@ -14,6 +15,10 @@ class App extends Component {
         userData,
         isRegistered: true,
   })
+  setUserData(userData);
+  setIsRegistered(true);
+  console.log(getIsRegistered()==="true");
+  
 };
 
   render() {
@@ -23,9 +28,9 @@ class App extends Component {
 
     return (
       <div className="app">
-        {isRegistered ? 
+        {getIsRegistered()==="true"? 
         
-        <UserPage userData={userData}/>
+        <UserPage userData={isRegistered ? userData: getUserData()}/>
         :
         <RegisterPage
           handleRegistration={this.handleRegistration}

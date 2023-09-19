@@ -39,7 +39,7 @@ export default class UserPage extends Component {
           <span>{email}</span>
           
           <p>Password:</p>
-          <span>Password - {password}</span>
+          <span>{password}</span>
         </div>
         
         <button className="continueButton">Continue</button>

@@ -7,27 +7,29 @@ export default class RergisterPage extends Component {
     password: '',
     validationErrors: {}
   }
-  
+
   validateEmail = (email) => {
-   const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-   if(regExp.test(email)){ 
-    return true;
-  }else{
-    return false;
-  }
-  }
-  validatePassword = (password) => {
-    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-    if(regExp.test(password)){ 
+    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (regExp.test(email)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
+  validatePassword = (password) => {
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    if (regExp.test(password)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value })
   }
+  
   handleRegister = () => {
     const { username, email, password } = this.state;
     const validationErrors = {}
@@ -94,15 +96,15 @@ export default class RergisterPage extends Component {
           {
             Object.keys(validationErrors).length ? (
               <div className="error-alert">
-                <span>{ validationErrors.email }</span>
-                <span>{ validationErrors.password }</span>
-                <span>{ validationErrors.username }</span>
+                <span>{validationErrors.email}</span>
+                <span>{validationErrors.password}</span>
+                <span>{validationErrors.username}</span>
               </div>
             ) : null
           }
           <button
             className="register-btn"
-            onClick={ this.handleRegister }
+            onClick={this.handleRegister}
           >
             Register
           </button>
