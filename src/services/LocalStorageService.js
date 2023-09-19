@@ -15,3 +15,11 @@ export const setIsRegistered = (isRegistered) => {
 export const getIsRegistered = () => {
     return localStorage.getItem("isRegistered");
 }
+
+export const setImageUrl = (imageUrl) => {
+    localStorage.setItem("imageUrl", imageUrl);
+}
+
+export const getImageUrl = (imageUrl) => {
+    return localStorage.getItem("imageUrl");
+}

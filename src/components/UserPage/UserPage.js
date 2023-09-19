@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./user-page.css";
+import { setImageUrl, getImageUrl } from "../../services/LocalStorageService";
 export default class UserPage extends Component {
   state = {
     imageUrl: "",
@@ -9,6 +10,8 @@ export default class UserPage extends Component {
     this.setState({
       imageUrl: URL.createObjectURL(e.target.files[0]),
     });
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
+    console.log(getImageUrl());
   };
 
   render() {
@@ -19,7 +22,7 @@ export default class UserPage extends Component {
         <div className="userPicture">
           <img
             className="profilePicture"
-            src={imageUrl}
+            src={getImageUrl()}
             alt=""
             accept="image/jpeg image/png image/jpg image/svg"
             id="user-image"
