@@ -12,6 +12,6 @@ export const setIsRegistered = (isRegistered) => {
     localStorage.setItem("isRegistered", isRegistered)
 }
 
-export const getIsRegistered = (isRegistered) => {
+export const getIsRegistered = () => {
     return localStorage.getItem("isRegistered");
 }
