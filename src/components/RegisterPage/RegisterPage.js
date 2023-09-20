@@ -122,11 +122,11 @@ export default class RergisterPage extends Component {
           }
           <img
             className="profilePicture"
-            src={imageUrl}
+            src={imageUrl ? imageUrl:"https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"}
             alt=""
             accept="image/jpeg image/png image/jpg image/svg"
             id="user-image"
-            url={imageUrl}
+    
           />
           <div className="addImage">
             <label htmlFor="user-image">Add image</label>
