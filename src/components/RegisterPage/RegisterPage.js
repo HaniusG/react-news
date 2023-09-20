@@ -26,7 +26,7 @@ export default class RergisterPage extends Component {
     }
   }
   validatePassword = (password) => {
-    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
     if (regExp.test(password)) {
       return true;
     } else {
