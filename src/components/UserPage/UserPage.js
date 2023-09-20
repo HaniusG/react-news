@@ -1,42 +1,26 @@
 import { Component } from "react";
 import "./user-page.css";
-import { setImageUrl, getImageUrl } from "../../services/LocalStorageService";
 export default class UserPage extends Component {
-  state = {
-    imageUrl: "",
-  };
 
-  onImageAdd = (e) => {
-    this.setState({
-      imageUrl: URL.createObjectURL(e.target.files[0]),
-    });
-    setImageUrl(URL.createObjectURL(e.target.files[0]))
-    console.log(getImageUrl());
-  };
 
   render() {
-    const { username, email, password } = this.props.userData;
-    const { imageUrl } = this.state;
+    const { username, email, password, imageUrl } = this.props.userData;
     return (
       <div className="userPage">
         <div className="userPicture">
           <img
             className="profilePicture"
-            src={getImageUrl()}
+            src={imageUrl}
             alt=""
             accept="image/jpeg image/png image/jpg image/svg"
             id="user-image"
-            url={imageUrl}
           />
-          <div className="addImage">
-            <label htmlFor="user-image">Add image</label>
-            <input type="file" onChange={this.onImageAdd} />
-          </div>
+          <h1>{username}</h1>
         </div>
 
         <div className="userRegisterInfo">
-          <p>Username:</p>
-          <span>{username}</span>
+          
+          <h1>Personal Info</h1>
 
           <p>Email:</p>
           <span>{email}</span>

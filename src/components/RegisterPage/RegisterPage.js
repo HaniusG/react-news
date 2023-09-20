@@ -5,8 +5,17 @@ export default class RergisterPage extends Component {
     username: '',
     email: '',
     password: '',
+    imageUrl: '',
     validationErrors: {}
   }
+
+  
+  onImageAdd = (e) => {
+    this.setState({
+      imageUrl: URL.createObjectURL(e.target.files[0]),
+    });
+  };
+
 
   validateEmail = (email) => {
     const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -31,10 +40,13 @@ export default class RergisterPage extends Component {
   }
   
   handleRegister = () => {
-    const { username, email, password } = this.state;
+    const { username, email, password, imageUrl } = this.state;
     const validationErrors = {}
     if (!email.trim() || !this.validateEmail(email)) {
       validationErrors.email = 'Please enter a valid email.'
+    }
+    if (!imageUrl.trim()) {
+      validationErrors.imageUrl = 'Please add image.'
     }
     if (!password.trim() || !this.validatePassword(password)) {
       validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
@@ -43,7 +55,7 @@ export default class RergisterPage extends Component {
       validationErrors.username = 'Username is required.'
     }
     if (Object.keys(validationErrors).length === 0) {
-      this.props.handleRegistration({ username, email, password })
+      this.props.handleRegistration({ username, email, password, imageUrl })
       this.setState({
         username: '',
         email: '',
@@ -54,11 +66,15 @@ export default class RergisterPage extends Component {
       this.setState({ validationErrors })
     }
   }
+
+  
+
   render() {
-    const { username, email, password, validationErrors } = this.state;
+    const { username, email, password, validationErrors, imageUrl} = this.state;
     return (
       <div className="register-page-wrapper">
         <h1>Register page</h1>
+        
         <div className="register-form">
           <div className="register-input">
             <label htmlFor="username">Username:</label>
@@ -99,9 +115,23 @@ export default class RergisterPage extends Component {
                 <span>{validationErrors.email}</span>
                 <span>{validationErrors.password}</span>
                 <span>{validationErrors.username}</span>
+                <span>{validationErrors.imageUrl}</span>
+
               </div>
             ) : null
           }
+          <img
+            className="profilePicture"
+            src={imageUrl}
+            alt=""
+            accept="image/jpeg image/png image/jpg image/svg"
+            id="user-image"
+            url={imageUrl}
+          />
+          <div className="addImage">
+            <label htmlFor="user-image">Add image</label>
+            <input type="file" onChange={this.onImageAdd} />
+          </div>
           <button
             className="register-btn"
             onClick={this.handleRegister}

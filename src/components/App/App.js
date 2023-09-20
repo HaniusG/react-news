@@ -7,7 +7,7 @@ import { setUserData, getUserData, setIsRegistered , getIsRegistered} from "../.
 class App extends Component {
   state = {
     isRegistered: false,
-    userData: {}
+    userData: {},
   };
 
   handleRegistration = (userData) => {
@@ -17,9 +17,10 @@ class App extends Component {
   })
   setUserData(userData);
   setIsRegistered(true);
-  console.log(getIsRegistered()==="true");
-  
 };
+
+
+
 
   render() {
     const { userData, isRegistered } = this.state;
@@ -34,6 +35,7 @@ class App extends Component {
         :
         <RegisterPage
           handleRegistration={this.handleRegistration}
+          imageUrl = {userData.imageUrl}
         />
         }
       </div>
