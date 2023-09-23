@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./app.css";
 import RegisterPage from "../RegisterPage";
 import UserPage from "../UserPage";
+import Count from "../Count";
 import { setUserData, getUserData, setIsRegistered , getIsRegistered} from "../../services/LocalStorageService";
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
           imageUrl = {userData.imageUrl}
         />
         }
+        <Count/>
       </div>
     );
   }
