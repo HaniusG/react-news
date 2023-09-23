@@ -1,10 +1,7 @@
-import { Component } from "react";
 import "./user-page.css";
-export default class UserPage extends Component {
+export default function UserPage (props) {
 
-
-  render() {
-    const { username, email, password, imageUrl } = this.props.userData;
+    const { username, email, password, imageUrl } = props.userData;
     return (
       <div className="userPage">
         <div className="userPicture">
@@ -33,4 +30,4 @@ export default class UserPage extends Component {
       </div>
     );
   }
-}
+

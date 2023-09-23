@@ -1,20 +1,21 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import "./app.css";
 import RegisterPage from "../RegisterPage";
 import UserPage from "../UserPage";
 import {FCount, Count} from "../Count";
-import { setUserDat, getUserData, setIsRegister , getIsRegistered} from "../../services/LocalStorageService";
+import LocalStorageService from "../../services/LocalStorageService"
 
 function App () {
-  const [isRegistered, setIsRegistered] = useState(false);
-  const [userData, setUserData] = useState({});
+  const storageData = LocalStorageService.getUserData()
+  const [isRegistered, setIsRegistered] = useState(!!storageData);
+  const [userData, setUserData] = useState(storageData);
 
 
 
 
  const handleRegistration = (userData) => {
-  setUserDat(userData);
-  setIsRegister(true);
+  LocalStorageService.saveUserData(userData);
+
   setUserData(userData);
   setIsRegistered(true);
 };
@@ -27,13 +28,12 @@ function App () {
 
     return (
       <div className="app">
-        {getIsRegistered()==="true"? 
+        {isRegistered ? 
         
-        <UserPage userData={isRegistered ? userData: getUserData()}/>
+        <UserPage userData={userData}/>
         :
         <RegisterPage
           handleRegistration={handleRegistration}
-          imageUrl = {userData.imageUrl}
         />
         }
         {/* <Count/>

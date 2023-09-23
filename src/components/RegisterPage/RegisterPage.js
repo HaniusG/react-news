@@ -1,23 +1,21 @@
-import { Component } from "react";
+import { useState } from "react";
 import './register-page.css'
-export default class RergisterPage extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: '',
-    imageUrl: '',
-    validationErrors: {}
-  }
+export default function RergisterPage (props) {
+ 
 
-  
-  onImageAdd = (e) => {
-    this.setState({
-      imageUrl: URL.createObjectURL(e.target.files[0]),
-    });
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
+  const [validationErrors, setValidateErrors] = useState({})
+
+  const onImageAdd = (e) => {
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
   };
 
 
-  validateEmail = (email) => {
+  const validateEmail = (email) => {
     const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (regExp.test(email)) {
       return true;
@@ -25,7 +23,7 @@ export default class RergisterPage extends Component {
       return false;
     }
   }
-  validatePassword = (password) => {
+  const validatePassword = (password) => {
     const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
     if (regExp.test(password)) {
       return true;
@@ -34,43 +32,44 @@ export default class RergisterPage extends Component {
     }
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value })
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name==="username") {
+      setUsername(value)
+    }else if(name==="email") {
+      setEmail(value)
+    }else if(name==="password"){
+      setPassword(value)
+    }
   }
   
-  handleRegister = () => {
-    const { username, email, password, imageUrl } = this.state;
+  const handleRegister = () => {
+  
     const validationErrors = {}
-    if (!email.trim() || !this.validateEmail(email)) {
+    if (!email.trim() || !validateEmail(email)) {
       validationErrors.email = 'Please enter a valid email.'
     }
     if (!imageUrl.trim()) {
       validationErrors.imageUrl = 'Please add image.'
     }
-    if (!password.trim() || !this.validatePassword(password)) {
+    if (!password.trim() || !validatePassword(password)) {
       validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
     }
     if (username.trim().length < 3) {
       validationErrors.username = 'Username is required.'
     }
     if (Object.keys(validationErrors).length === 0) {
-      this.props.handleRegistration({ username, email, password, imageUrl })
-      this.setState({
-        username: '',
-        email: '',
-        password: '',
-        validationErrors: {}
-      })
+      props.handleRegistration({ username, email, password, imageUrl })
+      setUsername('')
+      setEmail('')
+      setPassword('')
+      setValidateErrors({})
     } else {
-      this.setState({ validationErrors })
+      setValidateErrors(validationErrors)
     }
   }
 
-  
 
-  render() {
-    const { username, email, password, validationErrors, imageUrl} = this.state;
     return (
       <div className="register-page-wrapper">
         <h1>Register page</h1>
@@ -84,7 +83,7 @@ export default class RergisterPage extends Component {
               placeholder="Username"
               id="username"
               value={username}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className="register-input">
@@ -95,7 +94,7 @@ export default class RergisterPage extends Component {
               placeholder="Email"
               id="email"
               value={email}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className="register-input">
@@ -106,7 +105,7 @@ export default class RergisterPage extends Component {
               placeholder="Password"
               id="password"
               value={password}
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </div>
           {
@@ -130,11 +129,11 @@ export default class RergisterPage extends Component {
           />
           <div className="addImage">
             <label htmlFor="user-image">Add image</label>
-            <input type="file" onChange={this.onImageAdd} />
+            <input type="file" onChange={onImageAdd} />
           </div>
           <button
             className="register-btn"
-            onClick={this.handleRegister}
+            onClick={handleRegister}
           >
             Register
           </button>
@@ -142,4 +141,3 @@ export default class RergisterPage extends Component {
       </div>
     )
   }
-}
