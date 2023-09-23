@@ -1,4 +1,4 @@
-export const setUserData = (userData) => {
+export const setUserDat = (userData) => {
     localStorage.setItem("userData", JSON.stringify(userData))
 }
 
@@ -8,7 +8,7 @@ export const getUserData = () => {
 
 
 
-export const setIsRegistered = (isRegistered) => {
+export const setIsRegister = (isRegistered) => {
     localStorage.setItem("isRegistered", isRegistered)
 }
 

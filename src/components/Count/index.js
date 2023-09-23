@@ -1,3 +1,4 @@
 import Count from "./Count";
+import FCount from "./FCount";
 
-export default Count;
+export {Count, FCount};

@@ -3,34 +3,41 @@ import "./count.css"
 
 export default class Count extends Component{
     state = {
-        count: 0,
+        value: 0,
+        error: false
     }
 
-    buttonFunc = (event) => {
-        console.log(event);
+    
 
-        if( event.target.innerHTML === "+"){
-            this.setState({
-                count: this.state.count+1
-            })
-        }else{
-            this.setState({
-                count: this.state.count-1
-            })
+    changeValue = (value) => {
+        this.setState({ value, error: false })
+    }
+
+    onMinus = () =>  this.changeValue(this.state.value-1) 
+
+    onPlus = () =>  this.changeValue(this.state.value+1) 
+
+    onInputChange = (e) => {
+        const value = Number(e.target.value.trim());
+
+        if(isNaN(value)){
+            return this.setState({ error: true })
         }
-        
+
+        this.setState({value, error: false})
     }
 
     render(){
-        const { count } = this.state;
+        const { value, error } = this.state;
 
 
 
         return(
             <div className="counter">
-                <button onClick={this.buttonFunc}>-</button>
-                <input type="text" value={count}/>
-                <button onClick={this.buttonFunc}>+</button>
+                <button onClick={this.onMinus}>-</button>
+                <input type="text" value={value} onChange = {this.onInputChange}/>
+                <button onClick={this.onPlus}>+</button>
+                {error ? <div className="errorDiv">Input only number</div> : null}
             </div>
         )
     }
