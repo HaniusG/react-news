@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./app.css";
 import RegisterPage from "../RegisterPage";
 import UserPage from "../UserPage";
-import {FCount, Count} from "../Count";
+import DarkThemeToggle from "../DarkThemeToggle";
+// import {FCount, Count} from "../Count";
 import LocalStorageService from "../../services/LocalStorageService"
 
 function App () {
@@ -28,6 +29,7 @@ function App () {
 
     return (
       <div className="app">
+        <DarkThemeToggle/>
         {isRegistered ? 
         
         <UserPage userData={userData}/>
