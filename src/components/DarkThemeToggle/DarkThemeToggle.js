@@ -6,14 +6,14 @@ export default function DarkThemeToggle(){
 
     const changeTheme = () =>{
         setIsToggled(!isToggled);
-        {isToggled ? document.body.style.backgroundColor = "rgb(30, 30, 30)" : document.body.style.backgroundColor = "#EBEBEB"}
+        isToggled ? document.body.style.backgroundColor = "rgb(30, 30, 30)" : document.body.style.backgroundColor = "#EBEBEB";
     }
 
     return(
         <div>
             
-            {isToggled ? <span>White</span>: <span style={{color: '#EBEBEB'}}>Dark</span>}
-            <input type="checkbox" onChange={changeTheme}/>
+            {isToggled ? <label>White</label>: <label style={{color: '#EBEBEB'}}>Dark</label>}
+            <input type="checkbox" onChange={changeTheme} name = "background"/>
         </div>
     )
 }
