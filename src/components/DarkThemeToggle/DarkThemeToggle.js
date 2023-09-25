@@ -12,7 +12,7 @@ export default function DarkThemeToggle(){
     return(
         <div>
             
-            {isToggled ? <span>White</span>: <span>Dark</span>}
+            {isToggled ? <span>White</span>: <span style={{color: '#EBEBEB'}}>Dark</span>}
             <input type="checkbox" onChange={changeTheme}/>
         </div>
     )
