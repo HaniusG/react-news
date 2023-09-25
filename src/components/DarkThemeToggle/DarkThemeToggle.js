@@ -1,19 +1,17 @@
 import { useState } from 'react'
 import './dark-theme-toggle.css'
-
-export default function DarkThemeToggle(){
+export default function DarkThemeToggle({children}){
     const [isToggled, setIsToggled] = useState(false)
 
     const changeTheme = () =>{
         setIsToggled(!isToggled);
-        isToggled ? document.body.style.backgroundColor = "rgb(30, 30, 30)" : document.body.style.backgroundColor = "#EBEBEB";
     }
 
     return(
-        <div>
-            
-            {isToggled ? <label>White</label>: <label style={{color: '#EBEBEB'}}>Dark</label>}
-            <input type="checkbox" onChange={changeTheme} name = "background"/>
+        <div style={{backgroundColor: isToggled ? 'rgb(30, 30, 30)': "#EBEBEB"}}>
+            {isToggled ? <label htmlFor='backgroundTheme'>White</label>: <label htmlFor ='backgroundTheme' style={{color: '#EBEBEB'}}>Dark</label>}
+            <input type="checkbox" onChange={changeTheme} name = "backgroundTheme" id='backgroundTheme' style={{display: 'none'}}/>
+            {children}
         </div>
     )
 }
