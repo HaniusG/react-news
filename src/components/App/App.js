@@ -1,8 +1,11 @@
-import Header from "../Header/Header";
+import Header from "../Header";
+import Pricing from "../Pricing";
+
 function App() {
   return (
     <div>
       <Header/>
+      <Pricing/>
     </div>
 
 

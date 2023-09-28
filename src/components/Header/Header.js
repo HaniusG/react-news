@@ -1,23 +1,29 @@
-import { Button, Navbar,Nav, Container, Form} from 'react-bootstrap';
+import { Button, Navbar, Nav, Container, Form, FormControl } from 'react-bootstrap';
 
-export default function Header() {
+function Header() {
   return (
-<Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">About</Nav.Link>
-            <Form.Control type='text'/>
-            <Button variant='dark'>Login</Button>
-            <Button variant='warning'>Sign Up</Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+    <Navbar expand="lg" bg='dark' variant='dark' expend='lg'>
+      <Navbar.Brand href="#home">News</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id='my-navbar'>
+        <Nav className='mr-auto'>
+          <Nav.Link href='#'>Home</Nav.Link>
+          <Nav.Link href='#'>About</Nav.Link>
+        </Nav>
+
+        <Form className='ml-auto'>
+          <FormControl type='text' placeholder='Search' className='mr-sm-2'/>
+          <Button variant='outline-success'>Search</Button>
+          <Button variant='primary'>Login</Button>
+          <Button variant='secondary'>Register</Button>
+
+
+        </Form>
+      </Navbar.Collapse>
     </Navbar>
-    
-    
+
+
   );
 }
+
+export default Header;
