@@ -99,6 +99,7 @@ export default function Pricing() {
             <Table striped="columns" className='mt-5'>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Free</th>
                         <th>Pro</th>
                         <th>Enterprise</th>
