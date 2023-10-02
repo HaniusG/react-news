@@ -17,6 +17,11 @@ const info = [
     imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
     title: "Title",
     text: "inch vor text"
+  },
+  {
+    imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
+    title: "Title",
+    text: "inch vgior text"
   }
 ]
 
