@@ -6,19 +6,20 @@ function Header() {
       <Navbar.Brand href="#home">News</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id='my-navbar'>
-        <Nav className='mr-auto'>
+        <Nav className='me-auto'>
           <Nav.Link href='#'>Home</Nav.Link>
           <Nav.Link href='#'>About</Nav.Link>
         </Nav>
 
-        <Form className='ml-auto'>
-          <FormControl type='text' placeholder='Search' className='mr-sm-2'/>
-          <Button variant='outline-success'>Search</Button>
-          <Button variant='primary'>Login</Button>
-          <Button variant='secondary'>Register</Button>
+        <div className='ml-auto d-flex'>
+          <Form className='d-flex'>
+            <FormControl type='text' placeholder='Search' className='me-2' />
+            <Button variant='outline-success' className='me-xs-1 me-sm-2 me-md-3 me-lg-5 '>Search</Button>
+            <Button variant='primary' className='me-2'>Login</Button>
+            <Button variant='secondary' className='me-2'>Register</Button>
+          </Form>
+        </div>
 
-
-        </Form>
       </Navbar.Collapse>
     </Navbar>
 
