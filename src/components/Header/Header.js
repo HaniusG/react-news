@@ -1,9 +1,11 @@
 import { Button, Navbar, Nav, Container, Form, FormControl } from 'react-bootstrap';
-
+import logo from './logo.svg';
 function Header() {
   return (
     <Navbar expand="lg" bg='dark' variant='dark' expend='lg'>
-      <Navbar.Brand href="#home">News</Navbar.Brand>
+      <Navbar.Brand href="#home">
+        <img src={logo} alt="" style={{width: '30px'}}/>
+        </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id='my-navbar'>
         <Nav className='me-auto'>

@@ -1,28 +1,34 @@
 import Header from "../Header";
-import Pricing from "../Pricing";
 import NewsCard from "../NewsCard";
-import { Container, Row, Col, Card } from 'react-bootstrap'
-const info = [
+import ProfileCard from "../ProfileCard";
+
+
+import { Container, Row, Col } from 'react-bootstrap'
+const news = [
   {
-    imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
+    id: 1,
+    imageUrl: "/images/image1.jpg",
     title: "Title",
     text: "inch vor text"
   },
   {
-    imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
+    id: 2,
+    imageUrl: "/images/image2.webp",
     title: "Title",
     text: "inch vor text"
   },
   {
-    imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
+    id: 3,
+    imageUrl: "/images/image3.jpg",
     title: "Title",
     text: "inch vor text"
   },
   {
-    imageUrl: "https://fbpe.org/wp-content/uploads/2017/11/licensed-unlicensed-245x300.jpg",
+    id: 4,
+    imageUrl: "/images/image4.jpg",
     title: "Title",
-    text: "inch vgior text"
-  }
+    text: "inch vor text"
+  },
 ]
 
 function App() {
@@ -37,17 +43,23 @@ function App() {
 
       <Container >
         <Row>
-          {info.map(({imageUrl, title, text})=>{
+          {news.map(({imageUrl, title, text, id})=>{
             return(
-              <Col lg={3} md={4} sm={6} xs={12}>
+              <Col lg={3} md={4} sm={6} xs={12} key={id}>
                 <NewsCard imageUrl={imageUrl} title={title} text={text}/>
               </Col>
             )
-              
           })}
         </Row>
       </Container>
+      
+      <ProfileCard/>
 
+      <footer fluid className="bg-dark text-white text-center p-3" >
+        <Container>
+            &copy; 20223 News portal. All Rigths deserve
+        </Container>
+      </footer>
       
     </div>
 
