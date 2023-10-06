@@ -49,13 +49,15 @@ function App() {
 
   const [newsCardData, setNewsCardData] = useState({});
 
-  const handleNewsCardClick = ({imageUrl, title, text, id, fullText}) => {
+
+  const handleNewsCardClick = ({imageUrl, title, text, id, fullText, pubDate}) => {
       const newObj  = {
         imageUrl,
         title,
         text,
         id,
-        fullText
+        fullText,
+        pubDate
       }
 
       setNewsCardData(newObj)
@@ -87,6 +89,7 @@ function App() {
                 <Card.Title>{newsCardData.title}</Card.Title>
                 <Card.Text>{newsCardData.text}</Card.Text>
                 <Card.Text>{newsCardData.fullText}</Card.Text>
+                <Card.Text>{newsCardData.pubDate}</Card.Text>
               </Card.Body>
         </Card>
         <Row>
